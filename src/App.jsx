@@ -36,7 +36,8 @@ const Weather = () => {
                         }
                      >
                         <input
-                           autoComplete='on'
+                           name="city"
+                           autoComplete="address-level2"
                            placeholder='Enter City...'
                            type='text'
                            onChange={(e) => setSearchValue(e.target.value)}
