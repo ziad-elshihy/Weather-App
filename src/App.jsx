@@ -21,10 +21,6 @@ const Weather = () => {
       }
    }
 
-   useEffect(() => {
-      fetchWeatherData()
-   }, [searchValue]);
-
    const handleData = () => {
       if (selectValue === 'empty') {
          setData('')
@@ -74,7 +70,12 @@ const Weather = () => {
          }
       }
    }
-   console.log(selectValue, data)
+
+   useEffect(() => {
+      fetchWeatherData()
+      handleData()
+   }, [searchValue]);
+
    return (
       <>
          {
