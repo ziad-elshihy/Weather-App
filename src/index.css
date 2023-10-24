@@ -72,15 +72,22 @@ body {
    height: 40px;
    display: flex;
    align-items: center;
-   justify-content: center;
+   justify-content: space-between;
    gap: 20px;
    position: relative;
    margin-bottom: 50px;
    /* background-color: antiquewhite; */
 }
 
+.container .input span {
+   display: flex;
+   justify-content: space-between;
+   width: 80%;
+   height: 100%;
+}
+
 .container .input input {
-   width: 500px;
+   width: 700px;
    height: 40px;
    border: none;
    outline: none;
@@ -89,8 +96,19 @@ body {
    font-size: 17px;
 }
 
+.container .input select {
+   padding: 10px;
+   outline: none;
+   border: none;
+   border-radius: 22px;
+}
+
+.container .input select option {
+   padding: 5px;
+}
+
 .container .input button {
-   width: 7%;
+   width: 20%;
    height: 100%;
    border: none;
    outline: none;
@@ -260,7 +278,18 @@ body {
    color: #748896;
 }
 
-
+.data {
+   margin-top: 25px;
+   margin-bottom: 45px;
+   padding: 0 40px;
+   width: 90%;
+   border-radius: 22px;
+   background-color: white;
+   text-align: center;
+   font-size: 25px;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bolder;
+}
 
 @media (max-width:991px) {
    .container .input input {
@@ -328,8 +357,20 @@ body {
       /* background-color: #263D51; */
    }
 
+   .container .input {
+      flex-direction: column;
+   }
+
+   .container .input span {
+      width: 100%;
+   }
+
    .container .input input {
       width: 260px;
+   }
+
+   .container .input select {
+      width: 100%;
    }
 
    .container .main .right .one {
@@ -354,4 +395,7 @@ body {
       flex-direction: column;
       /* background-color: rgb(238, 237, 233); */
    }
+      .data {
+         font-size: 16px;
+      }
 }

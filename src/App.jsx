@@ -7,6 +7,8 @@ import { AddressAutofill } from '@mapbox/search-js-react';
 const Weather = () => {
    const [weather, setWeather] = useState(null);
    const [searchValue, setSearchValue] = useState('Cairo');
+   const [selectValue, setSelectValue] = useState('')
+   const [data, setData] = useState('')
 
    const fetchWeatherData = async () => {
       try {
@@ -23,27 +25,106 @@ const Weather = () => {
       fetchWeatherData()
    }, [searchValue]);
 
+   const handleData = () => {
+      if (selectValue === 'empty') {
+         setData('')
+      }
+      if (selectValue === 'farmer') {
+         if (weather?.main?.temp > 30) {
+            setData("برجاء العلم أن درجة الحرارة مرتفعة اليوم يرجى استخدام شباك التظليل لتغطية الصوب لحماية النباتات ويرجى أيضاً توخي الحذر لنشاط القوارض والحشرات")
+         }
+         if (weather?.main?.temp < 30 && weather?.main?.temp > 20) {
+            setData("درجة الحرارة معتدلة تميل للارتقاع برجاء العلم ان الوقت المناسب للري في الصباح الباكر وساعات المساء")
+         }
+         if (weather?.main?.temp < 20) {
+            setData("اليوم لا يوجد ظواهر جوية غير طبيعية نتمنى قضاء يوم سعيد")
+         }
+      }
+      if (selectValue === 'animal') {
+         if (weather?.main?.temp > 30) {
+            setData("درجة الحرارة منخفضة اليوم برجاء الحرص على وضع كمية كافية من الطعام للحيوانات")
+         }
+         if (weather?.main?.temp < 30 && weather?.main?.temp > 20) {
+            setData("انه يوم مناسب لرعي الماشيه نتمنى قضاء يوم سعيد")
+         }
+         if (weather?.main?.temp < 20) {
+            setData("درجة الحرارة منخفضة اليوم برجاء الحرص على وضع كمية كافية من الطعام للحيوانات")
+         }
+      }
+      if (selectValue === 'student') {
+         if (weather?.main?.temp > 30) {
+            setData("برجاء العلم أن درجة الحرارة مرتفعة اليوم يرجى اصطحاب كمية وفيره من السوائل وارتداء ملابس قطنية")
+         }
+         if (weather?.main?.temp < 30 && weather?.main?.temp > 20) {
+            setData("درجة الحرارة معتدلة نتمنى قضاء يوم سعيد ومع تمنياتنا بالتفوق")
+         }
+         if (weather?.main?.temp < 20) {
+            setData("درجة الحرارة منخفضة ننصح باصطحاب ملابس ثقيله")
+         }
+      }
+      if (selectValue === 'driver') {
+         if (weather?.main?.temp > 30) {
+            setData("درجة الحرارة مرتفعة برجاء فحص الإطارات واجزاء التبريد في المحرك")
+         }
+         if (weather?.main?.temp < 30 && weather?.main?.temp > 20) {
+            setData("اليوم مشرق ولا توجد ظواهر مناخية غير طبيعية نتمنى قضاء يوم سعيد")
+         }
+         if (weather?.main?.temp < 20) {
+            setData("الجو يميل للبرودة ومتوقع ظهور الشبوره صباحاً على طرق السفر برجاء الالتزام بقواعد المرور")
+         }
+      }
+   }
+   console.log(selectValue, data)
    return (
       <>
          {
             weather && <section className='weather'>
                <div className="container">
                   <div className="input">
-                     <AddressAutofill
-                        className='address'
-                        accessToken={
-                           "pk.eyJ1IjoiemlhZC1lbGFoaWh5IiwiYSI6ImNsbzA0dWZwdTE4bDUydG14eG5nbjZ3ZWMifQ.oCeKc3mNoOYVnZJglVQxUg"
-                        }
+                     <span>
+                        <AddressAutofill
+                           className='address'
+                           accessToken={
+                              "pk.eyJ1IjoiemlhZC1lbGFoaWh5IiwiYSI6ImNsbzA0dWZwdTE4bDUydG14eG5nbjZ3ZWMifQ.oCeKc3mNoOYVnZJglVQxUg"
+                           }
+                        >
+                           <input
+                              name="city"
+                              autoComplete="address-level2"
+                              placeholder='Enter City...'
+                              type='text'
+                              onChange={(e) => setSearchValue(e.target.value)}
+                           />
+                        </AddressAutofill>
+                        <button onClick={fetchWeatherData}>🔍</button>
+                     </span>
+                     <select
+                        onClick={handleData}
+                        value={selectValue}
+                        onChange={(e) => setSelectValue(e.target.value)}
                      >
-                        <input
-                           name="city"
-                           autoComplete="address-level2"
-                           placeholder='Enter City...'
-                           type='text'
-                           onChange={(e) => setSearchValue(e.target.value)}
-                        />
-                     </AddressAutofill>
-                     <button onClick={fetchWeatherData}>🔍</button>
+                        <option value='empty'>اختر</option>
+                        <option
+                           value='farmer'
+                        >
+                           مزراع
+                        </option>
+                        <option
+                           value='animal'
+                        >
+                           مربي الحيوانات
+                        </option>
+                        <option
+                           value='driver'
+                        >
+                           سائق
+                        </option>
+                        <option
+                           value='student'
+                        >
+                           طالب
+                        </option>
+                     </select>
                   </div>
                   <div className="main">
                      <div className='first'>
@@ -80,6 +161,12 @@ const Weather = () => {
                         </div>
                      </div>
                   </div>
+                  {
+                     data.length > 0 && <div className='container data'>
+                        {data}
+                     </div>
+                  }
+
                   <div className="forecast">
                      <div className="card" id="0">
                         <h4>Sat</h4>
