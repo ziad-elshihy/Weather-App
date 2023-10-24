@@ -74,7 +74,7 @@ const Weather = () => {
    useEffect(() => {
       fetchWeatherData()
       handleData()
-   }, [searchValue]);
+   }, [searchValue, selectValue]);
 
    return (
       <>
