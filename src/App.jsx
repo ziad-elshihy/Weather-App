@@ -25,7 +25,7 @@ const Weather = () => {
       if (selectValue === 'empty') {
          setData('')
       }
-      if (selectValue === 'farmer') {
+      if (selectValue === 'المزارع') {
          if (weather?.main?.temp > 30) {
             setData("برجاء العلم أن درجة الحرارة مرتفعة اليوم يرجى استخدام شباك التظليل لتغطية الصوب لحماية النباتات ويرجى أيضاً توخي الحذر لنشاط القوارض والحشرات")
          }
@@ -36,7 +36,7 @@ const Weather = () => {
             setData("اليوم لا يوجد ظواهر جوية غير طبيعية نتمنى قضاء يوم سعيد")
          }
       }
-      if (selectValue === 'animal') {
+      if (selectValue === 'مربي الحيوانات') {
          if (weather?.main?.temp > 30) {
             setData("درجة الحرارة منخفضة اليوم برجاء الحرص على وضع كمية كافية من الطعام للحيوانات")
          }
@@ -47,7 +47,7 @@ const Weather = () => {
             setData("درجة الحرارة منخفضة اليوم برجاء الحرص على وضع كمية كافية من الطعام للحيوانات")
          }
       }
-      if (selectValue === 'student') {
+      if (selectValue === 'طالب') {
          if (weather?.main?.temp > 30) {
             setData("برجاء العلم أن درجة الحرارة مرتفعة اليوم يرجى اصطحاب كمية وفيره من السوائل وارتداء ملابس قطنية")
          }
@@ -58,7 +58,7 @@ const Weather = () => {
             setData("درجة الحرارة منخفضة ننصح باصطحاب ملابس ثقيله")
          }
       }
-      if (selectValue === 'driver') {
+      if (selectValue === 'سائق') {
          if (weather?.main?.temp > 30) {
             setData("درجة الحرارة مرتفعة برجاء فحص الإطارات واجزاء التبريد في المحرك")
          }
@@ -106,22 +106,22 @@ const Weather = () => {
                      >
                         <option value='empty'>اختر</option>
                         <option
-                           value='farmer'
+                           value='المزارع'
                         >
                            المزارع
                         </option>
                         <option
-                           value='animal'
+                           value='مربي الحيوانات'
                         >
                            مربي الحيوانات
                         </option>
                         <option
-                           value='driver'
+                           value='سائق'
                         >
                            سائق
                         </option>
                         <option
-                           value='student'
+                           value='طالب'
                         >
                            طالب
                         </option>
@@ -164,10 +164,10 @@ const Weather = () => {
                   </div>
                   {
                      data.length > 0 && <div className='container data'>
-                        {data}
+                        <span className='head'>{selectValue}</span>
+                        <span>{data}</span>
                      </div>
                   }
-
                   <div className="forecast">
                      <div className="card" id="0">
                         <h4>Sat</h4>
