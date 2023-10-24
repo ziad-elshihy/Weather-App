@@ -175,7 +175,7 @@ const Weather = () => {
                            src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
                            alt="icon-temp"
                         />
-                        <p>34°C</p>
+                        <p>{weather?.main?.temp}°C</p>
                      </div>
                      <div className="card" id="1">
                         <h4>Sun</h4>
@@ -184,7 +184,7 @@ const Weather = () => {
                            src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
                            alt="icon-temp"
                         />
-                        <p>34°C</p>
+                        <p>{weather?.main?.temp}°C</p>
                      </div>
                      <div className="card" id="2">
                         <h4>Mon</h4>
@@ -193,7 +193,7 @@ const Weather = () => {
                            src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
                            alt="icon-temp"
                         />
-                        <p>34°C</p>
+                        <p>{weather?.main?.temp}°C</p>
                      </div>
                      <div className="card" id="3">
                         <h4>Tue</h4>
@@ -202,7 +202,7 @@ const Weather = () => {
                            src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
                            alt="icon-temp"
                         />
-                        <p>34°C</p>
+                        <p>{weather?.main?.temp}°C</p>
                      </div>
                      <div className="card" id="4">
                         <h4>Wed</h4>
@@ -211,7 +211,7 @@ const Weather = () => {
                            src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
                            alt="icon-temp"
                         />
-                        <p>34°C</p>
+                        <p>{weather?.main?.temp}°C</p>
                      </div>
                      <div className="card" id="5">
                         <h4>Thu</h4>
@@ -220,7 +220,7 @@ const Weather = () => {
                            src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
                            alt="icon-temp"
                         />
-                        <p>34°C</p>
+                        <p>{weather?.main?.temp}°C</p>
                      </div>
                      <div className="card" id="6">
                         <h4>Fri</h4>
@@ -229,7 +229,7 @@ const Weather = () => {
                            src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
                            alt="icon-temp"
                         />
-                        <p>34°C</p>
+                        <p>{weather?.main?.temp}°C</p>
                      </div>
                   </div>
                </div>
