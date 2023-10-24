@@ -108,7 +108,7 @@ const Weather = () => {
                         <option
                            value='farmer'
                         >
-                           مزارع
+                           المزارع
                         </option>
                         <option
                            value='animal'
