@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import DateTime from './components/DateTime';
 import { AddressAutofill } from '@mapbox/search-js-react';
+import { FcSearch } from 'react-icons/fc';
+import DateTime from './components/DateTime';
+import Speech from './components/Speech';
 
 const Weather = () => {
    const [weather, setWeather] = useState(null);
@@ -82,7 +84,7 @@ const Weather = () => {
             weather && <section className='weather'>
                <div className="container">
                   <div className="input">
-                     <span>
+                     <span className='input-container'>
                         <AddressAutofill
                            className='address'
                            accessToken={
@@ -90,6 +92,7 @@ const Weather = () => {
                            }
                         >
                            <input
+                              value={searchValue}
                               name="city"
                               autoComplete="address-level2"
                               placeholder='Enter City...'
@@ -97,7 +100,10 @@ const Weather = () => {
                               onChange={(e) => setSearchValue(e.target.value)}
                            />
                         </AddressAutofill>
-                        <button onClick={fetchWeatherData}>🔍</button>
+                        <Speech
+                           setSearchValue={setSearchValue}
+                        />
+                        <button onClick={fetchWeatherData}><FcSearch /></button>
                      </span>
                      <select
                         onClick={handleData}
