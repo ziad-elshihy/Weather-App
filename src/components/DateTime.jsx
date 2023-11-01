@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
+// React
 import { useEffect, useState } from 'react'
-
 
 const DateTime = ({ timeZone }) => {
    // eslint-disable-next-line no-unused-vars
    const [date, setDate] = useState(new Date())
    const [time, setTime] = useState(new Date())
+
    useEffect(() => {
       const interval = setInterval(() => {
          setTime(new Date());

@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
+// React
 import { useState, useEffect } from 'react';
+
+// React-Icon
 import { BsFillMicFill, BsFillMicMuteFill } from 'react-icons/bs';
 
 const Speech = ({ setSearchValue }) => {
    const [show, setShow] = useState(false);
    const [voiceSearch, setVoiceSearch] = useState(false);
    const [recognition, setRecognition] = useState(null);
-
+   
    useEffect(() => {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SpeechRecognition) {

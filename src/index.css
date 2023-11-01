@@ -87,7 +87,7 @@ body {
 .container .input input {
    width: 700px;
    height: 40px;
-   border: none;
+   border: 1px solid rgba(0, 0, 0, 0.5);
    outline: none;
    text-align: center;
    border-radius: 22px;
@@ -97,7 +97,7 @@ body {
 .container .input select {
    padding: 10px;
    outline: none;
-   border: 1px solid rgba(153, 205, 50, 0.6);
+   border: 1px solid rgba(255, 0, 0, 0.5);
    border-radius: 22px;
 }
 
@@ -292,6 +292,7 @@ body {
    font-size: 25px;
    font-family: Arial, Helvetica, sans-serif;
    font-weight: bolder;
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
 .head {
