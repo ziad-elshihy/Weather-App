@@ -1,11 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-// React
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
-const DateTime = ({ timeZone }) => {
-   // eslint-disable-next-line no-unused-vars
-   const [date, setDate] = useState(new Date())
-   const [time, setTime] = useState(new Date())
+const DateTime = ({ timeZone, color }) => {
+   const [date, setDate] = useState(new Date());
+   const [time, setTime] = useState(new Date());
 
    useEffect(() => {
       const interval = setInterval(() => {
@@ -15,26 +14,28 @@ const DateTime = ({ timeZone }) => {
    }, []);
 
    const optionsDate = {
-      weekday: "long",
-      month: "short",
-      day: "numeric",
+      weekday: 'long',
+      month: 'short',
+      day: 'numeric',
    };
 
-   const optionsTime = {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: true,
-      timezone: timeZone
-   };
+   const offsetTime = new Date(time.getTime() + timeZone * 1000);
+
+   const hours = offsetTime.getUTCHours();
+   const minutes = offsetTime.getUTCMinutes();
+   const seconds = offsetTime.getUTCSeconds();
+   const am_pm = hours >= 12 ? 'PM' : 'AM';
+   const formattedHours = hours > 12 ? hours - 12 : hours;
+
+   const formattedTime = `${String(formattedHours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${am_pm}`;
 
    return (
-      <h4>
-         {date.toLocaleString("en-US", optionsDate)}
+      <h4 className={color}>
+         {date.toLocaleString('en-US', optionsDate)}
          <br />
-         {time.toLocaleString("en-US", optionsTime)}
+         {formattedTime}
       </h4>
-   )
-}
+   );
+};
 
-export default DateTime
+export default DateTime;

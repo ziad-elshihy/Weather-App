@@ -9,7 +9,7 @@ const Speech = ({ setSearchValue }) => {
    const [show, setShow] = useState(false);
    const [voiceSearch, setVoiceSearch] = useState(false);
    const [recognition, setRecognition] = useState(null);
-   
+
    useEffect(() => {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SpeechRecognition) {

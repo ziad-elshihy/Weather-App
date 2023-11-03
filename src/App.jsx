@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 // React
 import { useState, useEffect } from 'react';
@@ -23,6 +24,10 @@ const Weather = () => {
    const [searchValue, setSearchValue] = useState('Cairo');
    const [selectValue, setSelectValue] = useState('')
    const [data, setData] = useState('')
+   const [time, setTime] = useState(new Date());
+   const [background, setBackground] = useState('')
+   const [color, setColor] = useState('')
+   const [loading, setLoading] = useState(true)
 
    const fetchWeatherData = async () => {
       try {
@@ -30,6 +35,7 @@ const Weather = () => {
          const base_url = 'https://api.openweathermap.org/data/2.5/weather?'
          const { data } = await axios.get(`${base_url}q=${searchValue}&units=Metric&appid=${api_key}&lang=ar`)
          setWeather(data)
+         setLoading(false)
       } catch (err) {
          console.log("Error" + err)
       }
@@ -85,52 +91,86 @@ const Weather = () => {
       }
    }
 
+   const handleBackground = () => {
+      const offsetTime = new Date(time.getTime() + weather?.timezone * 1000);
+      const hours = offsetTime.getUTCHours();
+      const isDaytime = hours >= 6 && hours < 18;
+      if (isDaytime) {
+         if (weather?.main?.temp > 30) {
+            setBackground("day_high")
+            setColor('')
+         }
+         if (weather?.main?.temp < 30 && weather?.main?.temp > 20) {
+            setBackground("day_normal")
+            setColor('')
+         }
+         if (weather?.main?.temp < 20) {
+            setBackground("day_low")
+            setColor('')
+         }
+      } else {
+         setBackground('night')
+         setColor('white')
+      }
+   }
+
    useEffect(() => {
       fetchWeatherData()
+   }, []);
+
+   useEffect(() => {
       handleData()
-   }, [searchValue, selectValue]);
+   }, [selectValue]);
+
+   useEffect(() => {
+      handleBackground()
+   }, [weather?.main?.temp]);
 
    return (
       <>
          {
-            weather && <section className='weather'>
-               <div className="container">
-                  <div className="input">
-                     <span className='input-container'>
-                        <AddressAutofill
-                           className='address'
-                           accessToken={
-                              "pk.eyJ1IjoiemlhZC1lbGFoaWh5IiwiYSI6ImNsbzA0dWZwdTE4bDUydG14eG5nbjZ3ZWMifQ.oCeKc3mNoOYVnZJglVQxUg"
-                           }
-                        >
-                           <Input
+            loading
+               ? <h1 className='loading'>Loading...</h1>
+               : weather && <section className={`weather ${background}`}>
+                  <div className="container">
+                     <div className="input">
+                        <span className='input-container'>
+                           <AddressAutofill
+                              className='address'
+                              accessToken={
+                                 "pk.eyJ1IjoiemlhZC1lbGFoaWh5IiwiYSI6ImNsbzA0dWZwdTE4bDUydG14eG5nbjZ3ZWMifQ.oCeKc3mNoOYVnZJglVQxUg"
+                              }
+                           >
+                              <Input
+                                 setSearchValue={setSearchValue}
+                                 searchValue={searchValue}
+                              />
+                           </AddressAutofill>
+                           <Speech
                               setSearchValue={setSearchValue}
-                              searchValue={searchValue}
                            />
-                        </AddressAutofill>
-                        <Speech
-                           setSearchValue={setSearchValue}
+                           <button onClick={fetchWeatherData}><FcSearch /></button>
+                        </span>
+                        <Select
+                           handleData={handleData}
+                           selectValue={selectValue}
+                           setSelectValue={setSelectValue}
                         />
-                        <button onClick={fetchWeatherData}><FcSearch /></button>
-                     </span>
-                     <Select
-                        handleData={handleData}
+                     </div>
+                     <Main
+                        weather={weather}
+                        color={color}
+                     />
+                     <SelectValue
+                        data={data}
                         selectValue={selectValue}
-                        setSelectValue={setSelectValue}
+                     />
+                     <Forecast
+                        weather={weather}
+                        color={color}
                      />
                   </div>
-                  <Main
-                     weather={weather}
-                  />
-                  <SelectValue
-                     data={data}
-                     selectValue={selectValue}
-                  />
-                  <Forecast
-                     weather={weather}
-                  />
-               </div>
-            </section>
+               </section>
          }
       </>
    );
