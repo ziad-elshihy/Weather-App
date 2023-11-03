@@ -25,7 +25,7 @@ const Weather = () => {
    const [selectValue, setSelectValue] = useState('')
    const [data, setData] = useState('')
    const [time, setTime] = useState(new Date());
-   const [background, setBackground] = useState('')
+   const [background, setBackground] = useState('day_normal')
    const [color, setColor] = useState('')
    const [loading, setLoading] = useState(true)
 
