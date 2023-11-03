@@ -25,7 +25,7 @@ const DateTime = ({ timeZone, color }) => {
    const minutes = offsetTime.getUTCMinutes();
    const seconds = offsetTime.getUTCSeconds();
    const am_pm = hours >= 12 ? 'PM' : 'AM';
-   const formattedHours = hours > 12 ? hours - 12 : hours;
+   const formattedHours = hours > 12 ? hours - 12 : hours === 0 ? 12 : hours;
 
    const formattedTime = `${String(formattedHours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${am_pm}`;
 
