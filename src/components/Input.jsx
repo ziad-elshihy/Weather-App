@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const Input = ({ searchValue, setSearchValue, setOptions, options }) => {
-   const [show, setShow] = useState(true);
+   const [show, setShow] = useState(false);
 
    const geo = async (value) => {
       const api_key = '1d5c016af2945c7d13282ccc55be2e0c';
@@ -49,8 +49,6 @@ const Input = ({ searchValue, setSearchValue, setOptions, options }) => {
          <input
             autoFocus
             value={searchValue}
-            name="city"
-            autoComplete="address-level2"
             placeholder='Enter City...'
             type='text'
             onChange={handelChange}
