@@ -28,6 +28,8 @@ const Weather = () => {
    const [background, setBackground] = useState('')
    const [color, setColor] = useState('')
    const [loading, setLoading] = useState(true)
+   const [options, setOptions] = useState([])
+
 
    const fetchWeatherData = async () => {
       try {
@@ -40,6 +42,7 @@ const Weather = () => {
          console.log("Error" + err)
       }
    }
+
 
    const handleData = () => {
       if (selectValue === 'empty') {
@@ -116,7 +119,7 @@ const Weather = () => {
 
    useEffect(() => {
       fetchWeatherData()
-   }, []);
+   }, [searchValue]);
 
    useEffect(() => {
       handleData()
@@ -130,22 +133,24 @@ const Weather = () => {
       <>
          {
             loading
-               ? <h1 className='loading'>Loading...</h1>
+               ? <div className='loading'>Loading...</div>
                : weather && <section className={`weather ${background}`}>
                   <div className="container">
                      <div className="input">
                         <span className='input-container'>
-                           <AddressAutofill
+                           {/* <AddressAutofill
                               className='address'
                               accessToken={
                                  "pk.eyJ1IjoiemlhZC1lbGFoaWh5IiwiYSI6ImNsbzA0dWZwdTE4bDUydG14eG5nbjZ3ZWMifQ.oCeKc3mNoOYVnZJglVQxUg"
                               }
-                           >
+                           > */}
                               <Input
                                  setSearchValue={setSearchValue}
                                  searchValue={searchValue}
+                                 setOptions={setOptions}
+                                 options={options}
                               />
-                           </AddressAutofill>
+                           {/* </AddressAutofill> */}
                            <Speech
                               setSearchValue={setSearchValue}
                            />

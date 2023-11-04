@@ -1,17 +1,80 @@
 /* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 
-const Input = ({ searchValue, setSearchValue }) => {
+const Input = ({ searchValue, setSearchValue, setOptions, options }) => {
+   const [show, setShow] = useState(true);
+
+   const geo = async (value) => {
+      const api_key = '1d5c016af2945c7d13282ccc55be2e0c';
+      const base_url = 'http://api.openweathermap.org/geo/1.0/direct?';
+      try {
+         const response = await fetch(`${base_url}q=${value.trim()}&limit=5&appid=${api_key}`);
+         if (!response.ok) {
+            throw new Error("Network response was not ok");
+         }
+         const data = await response.json();
+         setOptions(data);
+      } catch (error) {
+         console.error("Error fetching data:", error);
+      }
+   };
+
+   const handelChange = (e) => {
+      const value = e.target.value;
+      setSearchValue(value);
+
+      if (value === '') return;
+      geo(value);
+
+      // Reset the show state to true when the input changes
+      setShow(true);
+   };
+
+   const handleClick = (name) => {
+      setSearchValue(name);
+      setShow(false)
+      // Do not set show to false here
+   };
+
+   useEffect(() => {
+      // Call the geo function whenever searchValue changes
+      if (searchValue !== '') {
+         geo(searchValue);
+      }
+   }, [searchValue]); // searchValue is the dependency
+
    return (
-      <input
-         autoFocus
-         value={searchValue}
-         name="city"
-         autoComplete="address-level2"
-         placeholder='Enter City...'
-         type='text'
-         onChange={(e) => setSearchValue(e.target.value)}
-      />
-   )
-}
+      <>
+         <input
+            autoFocus
+            value={searchValue}
+            name="city"
+            autoComplete="address-level2"
+            placeholder='Enter City...'
+            type='text'
+            onChange={handelChange}
+         />
+         {
+            options.length > 0 && show && searchValue !== ''
+               ? <ul>
+                  {
+                     options.map((option, index) => {
+                        return (
+                           <li
+                              onClick={() => handleClick(option.name)}
+                              className="list"
+                              key={option.name + index}
+                           >
+                              {option.name} , {option.country}
+                           </li>
+                        );
+                     })
+                  }
+               </ul>
+               : ''
+         }
+      </>
+   );
+};
 
-export default Input
+export default Input;
