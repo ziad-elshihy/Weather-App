@@ -160,11 +160,6 @@ body {
    outline: none;
    border: 1px solid rgba(255, 0, 0, 0.5);
    border-radius: 22px;
-   appearance: none;
-}
-
-.container .input select option {
-   padding: 10px;
 }
 
 .container .input button {
@@ -343,13 +338,13 @@ body {
    color: #748896;
 }
 
-.data {
+.data.container {
    display: flex;
    gap: 30px;
    flex-direction: column;
    margin-top: 25px;
    margin-bottom: 45px;
-   padding: 0 40px;
+   padding: 50px 20px;
    width: 90%;
    border-radius: 22px;
    background-color: white;

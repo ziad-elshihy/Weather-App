@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
-import { RiArrowDownSFill } from 'react-icons/ri'
 
 const Select = ({ handleData, selectValue, setSelectValue }) => {
    return (
-      <div className='select'>
          <select
             onClick={handleData}
             value={selectValue}
@@ -31,11 +29,6 @@ const Select = ({ handleData, selectValue, setSelectValue }) => {
                طالب
             </option>
          </select>
-         <RiArrowDownSFill
-            size={22}
-            className='icon'
-         />
-      </div>
    )
 }
 
