@@ -107,15 +107,17 @@ body {
    display: flex;
    justify-content: center;
    height: 100%;
+}
+.container .input .input-container .list-container {
    position: relative;
 }
 
 .container .input .input-container ul {
    border-radius: 7px;
    position: absolute;
-   width: 85%;
+   width: 100%;
    padding: 20px 0;
-   left: 10px;
+   left: 0px;
    top: 45px;
    background-color: white;
 
@@ -378,12 +380,6 @@ body {
    .container .main {
       flex-direction: column;
    }
-
-   .container .input .input-container ul {
-      width: 35%;
-      left: 160px;
-      top: 45px;
-   }
 }
 
 
@@ -459,12 +455,6 @@ body {
 
    .data {
       font-size: 16px;
-   }
-
-   .container .input .input-container ul {
-      width: 65%;
-      left: 15px;
-      top: 45px;
    }
 }
 

@@ -34,7 +34,6 @@ const Input = ({ searchValue, setSearchValue, setOptions, options }) => {
    const handleClick = (name) => {
       setSearchValue(name);
       setShow(false)
-      // Do not set show to false here
    };
 
    useEffect(() => {
@@ -45,7 +44,7 @@ const Input = ({ searchValue, setSearchValue, setOptions, options }) => {
    }, [searchValue]); // searchValue is the dependency
 
    return (
-      <>
+      <div className="list-container">
          <input
             autoFocus
             value={searchValue}
@@ -72,7 +71,7 @@ const Input = ({ searchValue, setSearchValue, setOptions, options }) => {
                </ul>
                : ''
          }
-      </>
+      </div>
    );
 };
 
