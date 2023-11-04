@@ -124,6 +124,7 @@ body {
 .container .input .input-container ul li {
    cursor: pointer;
    padding: 5px 15px;
+   color: black;
 }
 
 .container .input .input-container ul li:hover {
