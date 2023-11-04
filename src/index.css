@@ -108,6 +108,7 @@ body {
    justify-content: center;
    height: 100%;
 }
+
 .container .input .input-container .list-container {
    position: relative;
 }
@@ -135,7 +136,7 @@ body {
 }
 
 .container .input input {
-   width: 700px;
+   width: 80%;
    height: 40px;
    border: 1px solid rgba(0, 0, 0, 0.5);
    outline: none;
@@ -144,15 +145,26 @@ body {
    font-size: 17px;
 }
 
+.container .input .select {
+   position: relative;
+}
+.container .input .select .icon {
+   position: absolute;
+   color: black;
+   right: 6px;
+   top: 50%;
+   transform: translateY(-50%);
+}
 .container .input select {
    padding: 10px;
    outline: none;
    border: 1px solid rgba(255, 0, 0, 0.5);
    border-radius: 22px;
+   appearance: none;
 }
 
 .container .input select option {
-   padding: 5px;
+   padding: 10px;
 }
 
 .container .input button {
