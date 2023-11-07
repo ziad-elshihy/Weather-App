@@ -56,11 +56,22 @@ const Speech = ({ setSearchValue }) => {
    return (
       <>
          {
-            recognition && <div className='mic'>
+            recognition
+            && <div className='mic'>
                {
                   voiceSearch
-                     ? <BsFillMicMuteFill onClick={closeVoice} />
-                     : <BsFillMicFill onClick={openVoice} />
+                     ? <span
+                        className='toggle'
+                        onClick={closeVoice}
+                     >
+                        <BsFillMicMuteFill />
+                     </span>
+                     : <span
+                        className='toggle'
+                        onClick={openVoice}
+                     >
+                        <BsFillMicFill />
+                     </span>
                }
                <span className={`mic-span ${show ? '' : 'show-tool-tip'}`}>
                   Say &nbsp;&apos;Delete&apos;&nbsp; to reset input
