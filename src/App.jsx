@@ -4,7 +4,6 @@
 import { useState, useEffect } from 'react';
 
 // React-Icons
-import { AddressAutofill } from '@mapbox/search-js-react';
 import { FcSearch } from 'react-icons/fc';
 
 // Axios
@@ -17,6 +16,7 @@ import Input from './components/Input';
 import Main from './components/Main';
 import Forecast from './components/Forecast';
 import SelectValue from './components/SelectValue';
+import Footer from './components/Footer';
 
 
 const Weather = () => {
@@ -138,19 +138,12 @@ const Weather = () => {
                   <div className="container">
                      <div className="input">
                         <span className='input-container'>
-                           {/* <AddressAutofill
-                              className='address'
-                              accessToken={
-                                 "pk.eyJ1IjoiemlhZC1lbGFoaWh5IiwiYSI6ImNsbzA0dWZwdTE4bDUydG14eG5nbjZ3ZWMifQ.oCeKc3mNoOYVnZJglVQxUg"
-                              }
-                           > */}
-                              <Input
-                                 setSearchValue={setSearchValue}
-                                 searchValue={searchValue}
-                                 setOptions={setOptions}
-                                 options={options}
-                              />
-                           {/* </AddressAutofill> */}
+                           <Input
+                              setSearchValue={setSearchValue}
+                              searchValue={searchValue}
+                              setOptions={setOptions}
+                              options={options}
+                           />
                            <Speech
                               setSearchValue={setSearchValue}
                            />
@@ -177,6 +170,7 @@ const Weather = () => {
                   </div>
                </section>
          }
+         <Footer />
       </>
    );
 }
