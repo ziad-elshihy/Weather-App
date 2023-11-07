@@ -360,12 +360,12 @@ body {
 }
 
 .developer {
-   background-color: rgba(0, 0, 0, 0.8);
+   background-color: black;
    height: 70px;
    color: white;
    display: grid;
    place-items: center;
-   width: 35%;
+   width: 100%;
 }
 
 
@@ -396,10 +396,6 @@ body {
 
    .container .main {
       flex-direction: column;
-   }
-
-   .developer {
-      width: 50%;
    }
 }
 
@@ -477,10 +473,6 @@ body {
    .data {
       font-size: 16px;
    }
-
-   .developer {
-      width: 100%;
-   }
 }
 
 /* Mic */
@@ -489,6 +481,8 @@ body {
 }
 
 .mic {
+   width: 40px;
+   height: 40px;
    position: relative;
    color: black;
    padding: 11px;
@@ -500,6 +494,13 @@ body {
    background-color: white;
    margin-left: 10px;
    border: 1px solid rgba(128, 128, 128, 0.6);
+}
+
+.mic .toggle {
+   min-width: 40px;
+   min-height: 40px;
+   display: grid;
+   place-items: center;
 }
 
 .mic:hover {
