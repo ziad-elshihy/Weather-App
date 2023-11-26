@@ -117,11 +117,11 @@ const Weather = () => {
             setBackground("day_high")
             setColor('')
          }
-         if (weather?.main?.temp < 30 && weather?.main?.temp > 20) {
+         if (weather?.main?.temp < 30 && weather?.main?.temp > 10) {
             setBackground("day_normal")
             setColor('')
          }
-         if (weather?.main?.temp < 20) {
+         if (weather?.main?.temp < 10) {
             setBackground("day_low")
             setColor('')
          }

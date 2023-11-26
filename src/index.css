@@ -531,6 +531,9 @@ body {
 .day_normal {
    background-image: url('./assets/white-cloud-blue-sky.jpg');
 }
+.day {
+   background-image: url('./assets/landscape-sky-dusk-beauty-beach.jpg');
+}
 
 .day_low {
    background-image: url('./assets/3d-winter-landscape-with-snowy-tree.jpg');
